@@ -28,3 +28,11 @@ Centralized Linux Security Auditing and Monitoring Platform.
 
 ## Project Type
 Academic Project
+## Project Type
+Academic Project
+
+## Live Dashboard
+[Open AuditMaster Live Dashboard](https://auditmasterlinux-fuffbhhaabaxgzmqlwzhbk.streamlit.app/)
+
+## Project Repository
+[View AuditMaster Source Code on GitHub](https://github.com/pujithamca/Auditmaster_linux)
