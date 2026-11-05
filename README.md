@@ -28,8 +28,6 @@ Centralized Linux Security Auditing and Monitoring Platform.
 
 ## Project Type
 Academic Project
-## Project Type
-Academic Project
 
 ## Live Dashboard
 [Open AuditMaster Live Dashboard](https://auditmasterlinux-fuffbhhaabaxgzmqlwzhbk.streamlit.app/)
