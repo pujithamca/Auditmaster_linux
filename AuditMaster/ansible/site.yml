@@ -1,0 +1,48 @@
+---
+- name: AuditMaster Security Automation
+  hosts: auditmaster
+  become: yes
+
+  tasks:
+    - name: Create department groups
+      ansible.builtin.group:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - cse
+        - ece
+        - it
+
+    - name: Create department users
+      ansible.builtin.user:
+        name: "{{ item.user }}"
+        groups: "{{ item.group }}"
+        append: yes
+        shell: /bin/bash
+        create_home: yes
+        state: present
+      loop:
+        - { user: cseuser, group: cse }
+        - { user: eceuser, group: ece }
+        - { user: ituser, group: it }
+
+    - name: Create department folders
+      ansible.builtin.file:
+        path: "/srv/auditmaster/{{ item.name }}"
+        state: directory
+        owner: root
+        group: "{{ item.group }}"
+        mode: '2770'
+      loop:
+        - { name: CSE, group: cse }
+        - { name: ECE, group: ece }
+        - { name: IT, group: it }
+
+    - name: Ensure security services are running
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      loop:
+        - auditd
+        - smbd
